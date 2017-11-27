@@ -3,6 +3,7 @@
 
 import time,os
 import RPi.GPIO as GPIO
+import send_push
 
 INTAVAL = 3
 SLEEPTIME = 5
@@ -23,6 +24,7 @@ try:
       st = time.time()
       print("人を感知しました")
       os.system('sh post.sh Detected_something! ')
+      send_push.test_push()
       GPIO.output(22, True)
     else:
       GPIO.output(22, False)
